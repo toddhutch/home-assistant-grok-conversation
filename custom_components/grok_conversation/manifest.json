@@ -1,6 +1,7 @@
 {
   "domain": "grok_conversation",
   "name": "Grok Conversation",
+  "version": "1.0.0",
   "after_dependencies": ["assist_pipeline", "intent"],
   "codeowners": ["@toddhutch"],
   "config_flow": true,
