@@ -1,0 +1,12 @@
+{
+  "domain": "grok_conversation",
+  "name": "Grok Conversation",
+  "after_dependencies": ["assist_pipeline", "intent"],
+  "codeowners": ["@toddhutch"],
+  "config_flow": true,
+  "dependencies": ["conversation"],
+  "documentation": "https://github.com/toddhutch/home-assistant-grok-conversation",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "requirements": ["openai>=1.0.0"]
+}
