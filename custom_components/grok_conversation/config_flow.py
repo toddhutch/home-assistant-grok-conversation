@@ -1,4 +1,9 @@
 """Config flow for Grok Conversation integration."""
+
+from __future__ import annotations
+
+import logging
+from typing import Any
 import openai
 import voluptuous as vol
 
@@ -31,7 +36,7 @@ class GrokConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     VERSION = 1
 
     async def async_step_user(
-        self, user_input: dict[str, any] | None = None
+        self, user_input: dict[str, Any] | None = None
     ) -> FlowResult:
         """Handle the initial step."""
         errors: dict[str, str] = {}
@@ -39,10 +44,10 @@ class GrokConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             api_key = user_input[CONF_API_KEY]
             client = openai.AsyncOpenAI(
                 api_key=api_key,
-                base_url="https://api.x.ai/v1",  # Grok endpoint
+                base_url="https://api.x.ai/v1",
             )
             try:
-                await client.models.list()  # Test API key validity
+                await client.models.list()
             except openai.AuthenticationError:
                 errors["base"] = "invalid_api_key"
             except openai.OpenAIError as err:
@@ -79,7 +84,7 @@ class GrokOptionsFlow(config_entries.OptionsFlow):
         self.config_entry = config_entry
 
     async def async_step_init(
-        self, user_input: dict[str, any] | None = None
+        self, user_input: dict[str, Any] | None = None
     ) -> FlowResult:
         """Manage the options."""
         if user_input is not None:
